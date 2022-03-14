@@ -1,6 +1,6 @@
 namespace Sim
 {
-	class Object
+	class Object : public UTL::COM::Object
 	{
 
 	};

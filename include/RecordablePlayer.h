@@ -1,7 +1,7 @@
 class RecordablePlayer : public Sim::Entity
 {
 public:
-	uint8_t pad[0x3C];					// 00-3C
+	uint8_t pad[0x34];					// 08-3C
 	ISimable* m_pSimable;				// 3C-40
 	uint8_t pad2[0x4];					// 40-44
 	IPlayer m_sPlayer;					// 44-4C
