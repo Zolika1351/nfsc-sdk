@@ -1,0 +1,56 @@
+#define VALIDATE_SIZE(struc, size) static_assert(sizeof(struc) == size, "Invalid structure size of " #struc)
+#define VALIDATE_OFFSET(struc, member, offset) \
+	static_assert(offsetof(struc, member) == offset, "The offset of " #member " in " #struc " is not " #offset "...")
+
+namespace plugin
+{
+	uint32_t gBaseAddress = (uint32_t)GetModuleHandle(NULL);
+	void gameStartupEvent();
+}
+
+#include "UMath.h"
+#include "Engine.h"
+#include "eModel.h"
+#include "Timer.h"
+#include "HUD.h"
+#include "Sim.h"
+#include "CameraAI.h"
+#include "Object.h"
+#include "Entity.h"
+#include "IRigidBody.h"
+#include "ISimable.h"
+#include "Game.h"
+#include "PhysicsObject.h"
+#include "AITrafficManager.h"
+#include "Attrib.h"
+#include "IPursuitAI.h"
+#include "AIPursuit.h"
+#include "ITrafficAI.h"
+#include "FeGarageMain.h"
+#include "DALFeVehicle.h"
+#include "FECarRecord.h"
+#include "FECustomizationRecord.h"
+#include "FEPlayerCarDB.h"
+#include "FEManager.h"
+#include "IVehicle.h"
+#include "PVehicle.h"
+#include "AIVehicle.h"
+#include "IDamageable.h"
+#include "IEngineDamage.h"
+#include "IEngine.h"
+#include "EngineRacer.h"
+#include "IPlayer.h"
+#include "RecordablePlayer.h"
+#include "RaceStarter.h"
+#include "Camera.h"
+#include "TrackInfo.h"
+#include "Explosion.h"
+#include "Lists.h"
+#include "Draw.h"
+#include "DebugVehicleSelection.h"
+#include "GCareer.h"
+#include "FacePixelation.h"
+#include "eViewPlatInterface.h"
+#include "LoadingScreenBase.h"
+#include "DALVehicle.h"
+#include "GrandSceneryCullInfo.h"
