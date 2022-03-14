@@ -26,6 +26,11 @@ public:
 		return ((char*(__thiscall*)(IVehicle*))(*(void***)this)[23])(this);
 	}
 
+	uint32_t GetVehicleKey()
+	{
+		return ((uint32_t(__thiscall*)(IVehicle*))(*(void***)this)[24])(this);
+	}
+
 	bool IsLoading()
 	{
 		return ((bool(__thiscall*)(IVehicle*))(*(void***)this)[28])(this);
