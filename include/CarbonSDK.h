@@ -59,3 +59,4 @@ namespace plugin
 #include "LoadingScreenBase.h"
 #include "DALVehicle.h"
 #include "GrandSceneryCullInfo.h"
+#include "GRaceStatus.h"

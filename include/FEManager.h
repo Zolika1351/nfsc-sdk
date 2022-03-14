@@ -28,3 +28,8 @@ void FE_ShowWinningPostRaceScreen()
 {
 	((void(__cdecl*)())0x65E270)();
 }
+
+void FE_ShowPostRaceScreen(bool win)
+{
+	((void(__cdecl*)(bool))0x65C6A0)(win);
+}
