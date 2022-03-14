@@ -27,12 +27,9 @@ VALIDATE_OFFSET(PhysicsState, m_vTorque, 0x60);
 VALIDATE_OFFSET(PhysicsState, m_fRadius, 0x6C);
 VALIDATE_OFFSET(PhysicsState, m_mMatrix, 0x70);
 
-class IRigidBody
+class IRigidBody : public UTL::COM::Object
 {
 public:
-	uint8_t pad[0x30];							// 00-30
-	PhysicsState** m_pPhysicsState;				// 30-34
-
 	template<typename T>
 	inline T* GetParent()
 	{
@@ -42,15 +39,19 @@ public:
 	{
 		((void(__thiscall*)(IRigidBody*, UMath::Matrix4*))(*(void***)this)[28])(this, mat);
 	}
+
+	static uint32_t IHandle() { return 0x403750; };
 };
-VALIDATE_OFFSET(IRigidBody, m_pPhysicsState, 0x30);
 
 class RBVehicle
 {
 public:
 	uint8_t pad[0x40];							// 000-040
-	IRigidBody m_sRigidBody;					// 040-074
-	uint8_t pad2[0x18C];						// 074-200
+	IRigidBody m_sRigidBody;					// 040-048
+	uint8_t pad2[0x28];							// 048-070
+	PhysicsState** m_pPhysicsState;				// 070-074
+	uint8_t pad3[0x18C];						// 074-200
 };
 VALIDATE_SIZE(RBVehicle, 0x200);
 VALIDATE_OFFSET(RBVehicle, m_sRigidBody, 0x40);
+VALIDATE_OFFSET(RBVehicle, m_pPhysicsState, 0x70);

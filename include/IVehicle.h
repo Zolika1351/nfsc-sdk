@@ -1,11 +1,9 @@
 class IVehicleAI;
 class PVehicle;
 
-class IVehicle
+class IVehicle : public UTL::COM::Object
 {
 public:
-	uint8_t pad[0x8];							// 00-08
-
 	inline PVehicle* GetParent()
 	{
 		return (PVehicle*)(((uintptr_t)this) - 0xB8);
@@ -65,5 +63,7 @@ public:
 	{
 		return ((IVehicleAI*(__thiscall*)(IVehicle*))(*(void***)this)[48])(this);
 	}
+
+	static uint32_t IHandle() { return 0x403D30; };
 };
 VALIDATE_SIZE(IVehicle, 0x8);

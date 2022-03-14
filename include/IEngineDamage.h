@@ -1,8 +1,6 @@
-class IEngineDamage
+class IEngineDamage : public UTL::COM::Object
 {
 public:
-	uint8_t pad[0x8];										// 00-08
-
 	bool IsBlown()
 	{
 		return ((bool(__thiscall*)(IEngineDamage*))(*(void***)this)[1])(this);
@@ -23,4 +21,6 @@ public:
 	{
 		((void(__thiscall*)(IEngineDamage*))(*(void***)this)[5])(this);
 	}
+	
+	static uint32_t IHandle() { return 0x4A9D00; }
 };

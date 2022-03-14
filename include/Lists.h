@@ -5,7 +5,7 @@ public:
 	static inline uint8_t*& mBegin = *(uint8_t**)(begin);
 	static inline uint32_t& mSize = *(uint32_t*)(begin+8);
 
-	static T* Get(int id)
+	static T* Get(unsigned int id)
 	{
 		if (id >= mSize) return nullptr;
 		return *(T**)(mBegin + (id * 4));

@@ -1,9 +1,11 @@
-class IDamageable
+class IDamageable : public UTL::COM::Object
 {
 public:
-	uint8_t pad[0x34];										// 00-34
-	float m_fDamage;										// 34-38
-
+	template<typename T>
+	inline T* GetParent()
+	{
+		return (T*)(((uintptr_t)this) - 0x44);
+	}
 	void SetInShock(float shock)
 	{
 		((void(__thiscall*)(IDamageable*, float))(*(void***)this)[2])(this, shock);
@@ -32,5 +34,6 @@ public:
 	{
 		((void(__thiscall*)(IDamageable*))(*(void***)this)[7])(this);
 	}
+	
+	static uint32_t IHandle() { return 0x406040; }
 };
-VALIDATE_OFFSET(IDamageable, m_fDamage, 0x34);

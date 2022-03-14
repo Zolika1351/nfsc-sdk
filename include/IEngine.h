@@ -9,14 +9,14 @@ public:
 	float m_fRegenTime;						// 18-1C
 };
 
-class IEngine
+class IEngine : public UTL::COM::Object
 {
 public:
-	uint8_t pad[0x8];						// 00-08
-
 	template<typename T>
 	inline T* GetParent()
 	{
 		return (T*)(((uintptr_t)this) - 0x4C);
 	}
+	
+	static uint32_t IHandle() { return 0x403CB0; }
 };

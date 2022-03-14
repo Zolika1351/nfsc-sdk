@@ -9,11 +9,15 @@ void scriptMain()
 	{
 		if (auto veh = VehicleList.Get(i))
 		{
-			// get the physics state from the car simable's rigidbody
-			if (auto state = veh->GetParent()->m_sSimable.GetRigidBody()->m_pPhysicsState[0])
+			// get the car's rigidbody
+			if (auto rb = veh->m_pList->Find<IRigidBody>())
 			{
-				// set the turn velocity
-				state->m_vTurnVelocity = { 1,1,1 };
+				// get the physics state from the rigidbody
+				if (auto state = rb->GetParent<RBVehicle>()->m_pPhysicsState[0])
+				{
+					// set the turn velocity
+					state->m_vTurnVelocity = { 1,1,1 };
+				}
 			}
 		}
 	}

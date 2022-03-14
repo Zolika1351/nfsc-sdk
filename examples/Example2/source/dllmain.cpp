@@ -1,17 +1,30 @@
 #include "../../../include/CarbonSDK.cpp"
 
+void SetCarDamage(IVehicle* veh, float damage)
+{
+	// find the vehicle's IDamageable
+	if (auto damageable = veh->m_pList->Find<IDamageable>())
+	{
+		// set the DamageVehicle's damage value
+		damageable->GetParent<DamageVehicle>()->m_fDamage = damage;
+	}
+}
+
 // this will run each frame outside menus if the game isn't paused
 void scriptMain()
 {
-	// force player heat to 5x if the player car is an RX8
+	// force player heat to 5x if the player car is an RX8, or destroy it if it's an M3 GTR
 	if (auto ply = PlayerList.Get(0))
 	{
+		// get the player's simable
 		if (auto simable = ply->GetSimable())
 		{
-			auto veh = (PVehicle*)simable->GetParent(); // a simable's parent is a PhysicsObject, the player's one is always a PVehicle
-			if (veh->m_sVehicle.GetVehicleKey() == stringhash32("rx8")) // NOTE: stringhash32 is case sensitive!
+			// get the vehicle
+			if (auto veh = simable->m_pList->Find<IVehicle>())
 			{
-				Game_SetWorldHeat(5);
+				// NOTE: stringhash32 is case sensitive!
+				if (veh->GetVehicleKey() == stringhash32("rx8")) Game_SetWorldHeat(5);
+				if (veh->GetVehicleKey() == stringhash32("bmwm3gtre46")) SetCarDamage(veh, 1);
 			}
 		}
 	}

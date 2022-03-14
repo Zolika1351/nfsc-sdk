@@ -1,8 +1,6 @@
-class IPlayer
+class IPlayer : public UTL::COM::Object
 {
 public:
-	uint8_t pad[0x8];						// 00-08
-
 	template<typename T>
 	inline T* GetParent()
 	{
@@ -13,4 +11,6 @@ public:
 	{
 		return ((ISimable*(__thiscall*)(IPlayer*))(*(void***)this)[1])(this);
 	}
+
+	static uint32_t IHandle() { return 0x66B460; }
 };

@@ -1,58 +1,3 @@
-class AIVehicle;
-
-class IPerpetrator
-{
-public:
-	uint8_t pad[0x1C];							// 00-1C
-	float m_fHeatLevel;							// 1C-20
-	uint8_t pad2[0x4];							// 20-24
-	int m_nCostToState;							// 24-28
-
-	float GetHeat()
-	{
-		((void(__thiscall*)(IPerpetrator*))(*(void***)this)[1])(this);
-	}
-	void SetHeat(float heat)
-	{
-		((void(__thiscall*)(IPerpetrator*, float))(*(void***)this)[2])(this, heat);
-	}
-};
-VALIDATE_OFFSET(IPerpetrator, m_nCostToState, 0x24);
-
-class IVehicleAI
-{
-public:
-	uint8_t pad[0x8];							// 00-08
-
-	template<typename T>
-	inline T* GetAIVehicle()
-	{
-		return (T*)(((uintptr_t)this) - 0x44);
-	}
-	ISimable* GetSimable()
-	{
-		return ((ISimable*(__thiscall*)(IVehicleAI*))(*(void***)this)[1])(this);
-	}
-	void SetSpawned()
-	{
-		((void(__thiscall*)(IVehicleAI*))(*(void***)this)[37])(this);
-	}
-	IVehicle* GetWingman()
-	{
-		return ((IVehicle*(__thiscall*)(IVehicleAI*))(*(void***)this)[50])(this);
-	}
-	AIPursuit* GetPursuit()
-	{
-		return ((AIPursuit*(__thiscall*)(IVehicleAI*))(*(void***)this)[44])(this);
-	}
-
-	// warp car to a random nav point
-	void ResetVehicleToRoadNav(WRoadNav* nav)
-	{
-		((void(__thiscall*)(IVehicleAI*, WRoadNav*))(*(void***)this)[22])(this, nav);
-	}
-};
-
 class AIVehicle
 {
 public:
@@ -60,12 +5,6 @@ public:
 	IVehicle* m_pVehicle;						// 040-044
 	IVehicleAI m_sAI;							// 044-04C
 
-	// directly
-	void _SetGoal(uint32_t* goalHash)
-	{
-		((void(__thiscall*)(AIVehicle*, uint32_t*))(0x427A60))(this, goalHash);
-	}
-	// from vft
 	void SetGoal(uint32_t* goalHash)
 	{
 		((void(__thiscall*)(AIVehicle*, uint32_t*))(*(void***)this)[60])(this, goalHash);
@@ -81,11 +20,17 @@ public:
 	uint8_t pad4[0x1C];							// 0E0-0FC
 	void* m_pTransmission;						// 0FC-100
 	uint8_t pad5[0x104];						// 100-204
-	IPerpetrator m_sPerpetrator;				// 204-22C
+	IPerpetrator m_sPerpetrator;				// 204-20C
+	uint8_t pad[0x14];							// 20C-220
+	float m_fHeatLevel;							// 220-224
+	uint8_t pad2[0x4];							// 224-228
+	int m_nCostToState;							// 228-22C
 };
 VALIDATE_OFFSET(AIPerpVehicle, m_pPursuit, 0xDC);
 VALIDATE_OFFSET(AIPerpVehicle, m_pTransmission, 0xFC);
 VALIDATE_OFFSET(AIPerpVehicle, m_sPerpetrator, 0x204);
+VALIDATE_OFFSET(AIPerpVehicle, m_fHeatLevel, 0x220);
+VALIDATE_OFFSET(AIPerpVehicle, m_nCostToState, 0x228);
 
 class AIVehiclePursuit : public AIVehicle
 {
@@ -94,12 +39,6 @@ public:
 	IPursuitAI m_sPursuitAI;					// 204-???
 };
 VALIDATE_OFFSET(AIVehiclePursuit, m_sPursuitAI, 0x204);
-
-class IInputPlayer
-{
-public:
-	uint8_t pad[0x8];							// 00-08
-};
 
 class AIVehicleHuman : public AIPerpVehicle
 {

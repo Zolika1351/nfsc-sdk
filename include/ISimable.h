@@ -1,10 +1,8 @@
 class PhysicsObject;
 
-class ISimable
+class ISimable : public UTL::COM::Object
 {
 public:
-	uint8_t pad[0xC];							// 00-0C
-
 	inline PhysicsObject* GetParent()
 	{
 		return (PhysicsObject*)(((uintptr_t)this) - 0x24);
@@ -32,6 +30,8 @@ public:
 
 	IRigidBody* GetRigidBody()
 	{
-		return ((IRigidBody * (__thiscall*)(ISimable*))(*(void***)this)[20])(this);
+		return ((IRigidBody*(__thiscall*)(ISimable*))(*(void***)this)[20])(this);
 	}
+
+	static uint32_t IHandle() { return 0x4040B0; };
 };
