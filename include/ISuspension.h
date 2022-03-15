@@ -3,7 +3,7 @@ class ISuspension : public UTL::COM::Object
 public:
 	float GetWheelVelocity(int wheel)
 	{
-		return ((float(__thiscall*)(ISuspension*, int))(*(void***)this)[19])(this, wheel);
+		return ((float(__thiscall*)(ISuspension*, int))(*(void***)this)[18])(this, wheel);
 	}
 	int GetNumWheelsOnGround()
 	{
