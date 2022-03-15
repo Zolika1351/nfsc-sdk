@@ -1,5 +1,4 @@
 #define _CRT_SECURE_NO_WARNINGS
-#define UNICODE
 
 #include <windows.h>
 #include <stdint.h>
