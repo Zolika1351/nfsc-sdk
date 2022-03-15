@@ -12,12 +12,9 @@ void scriptMain()
 			// get the car's rigidbody
 			if (auto rb = veh->m_pList->Find<IRigidBody>())
 			{
-				// get the physics state from the rigidbody
-				if (auto state = rb->GetParent<RBVehicle>()->m_pPhysicsState[0])
-				{
-					// set the turn velocity
-					state->m_vTurnVelocity = { 1,1,1 };
-				}
+				// set the turn velocity
+				UMath::Vector3 v = { 1,1,1 };
+				rb->SetAngularVelocity(&v);
 			}
 		}
 	}

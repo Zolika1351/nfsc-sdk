@@ -35,6 +35,18 @@ public:
 	{
 		return (T*)(((uintptr_t)this) - 0x40);
 	}
+	void SetPosition(UMath::Vector3* v)
+	{
+		((void(__thiscall*)(IRigidBody*, UMath::Vector3*))(*(void***)this)[23])(this, v);
+	}
+	void SetLinearVelocity(UMath::Vector3* v)
+	{
+		((void(__thiscall*)(IRigidBody*, UMath::Vector3*))(*(void***)this)[24])(this, v);
+	}
+	void SetAngularVelocity(UMath::Vector3* v)
+	{
+		((void(__thiscall*)(IRigidBody*, UMath::Vector3*))(*(void***)this)[25])(this, v);
+	}
 	void SetOrientation(UMath::Matrix4* mat)
 	{
 		((void(__thiscall*)(IRigidBody*, UMath::Matrix4*))(*(void***)this)[28])(this, mat);

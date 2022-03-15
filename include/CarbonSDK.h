@@ -60,3 +60,4 @@ namespace plugin
 #include "DALVehicle.h"
 #include "GrandSceneryCullInfo.h"
 #include "GRaceStatus.h"
+#include "AICopManager.h"
