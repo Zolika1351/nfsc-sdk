@@ -1,5 +1,9 @@
 namespace Sim
 {
+	int GetUserMode()
+	{
+		return ((bool(__cdecl*)())0x75CF70)();
+	}
 	bool Exists()
 	{
 		return ((bool(__cdecl*)())0x75CDF0)();
