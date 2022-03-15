@@ -19,15 +19,22 @@ public:
 	AIPursuit* m_pPursuit;						// 0DC-0E0
 	uint8_t pad4[0x1C];							// 0E0-0FC
 	void* m_pTransmission;						// 0FC-100
-	uint8_t pad5[0x104];						// 100-204
+	uint8_t pad5[0x8];							// 100-108
+	float m_fSteerAngle;						// 108-10C
+	float m_fGasPedal;							// 10C-110
+	float m_fBrakePedal;						// 110-114
+	uint8_t pad6[0xF0];							// 114-204
 	IPerpetrator m_sPerpetrator;				// 204-20C
-	uint8_t pad[0x14];							// 20C-220
+	uint8_t pad7[0x14];							// 20C-220
 	float m_fHeatLevel;							// 220-224
-	uint8_t pad2[0x4];							// 224-228
+	uint8_t pad8[0x4];							// 224-228
 	int m_nCostToState;							// 228-22C
 };
 VALIDATE_OFFSET(AIPerpVehicle, m_pPursuit, 0xDC);
 VALIDATE_OFFSET(AIPerpVehicle, m_pTransmission, 0xFC);
+VALIDATE_OFFSET(AIPerpVehicle, m_fSteerAngle, 0x108);
+VALIDATE_OFFSET(AIPerpVehicle, m_fGasPedal, 0x4C + 0xC0);
+VALIDATE_OFFSET(AIPerpVehicle, m_fBrakePedal, 0x4C + 0xC4);
 VALIDATE_OFFSET(AIPerpVehicle, m_sPerpetrator, 0x204);
 VALIDATE_OFFSET(AIPerpVehicle, m_fHeatLevel, 0x220);
 VALIDATE_OFFSET(AIPerpVehicle, m_nCostToState, 0x228);
