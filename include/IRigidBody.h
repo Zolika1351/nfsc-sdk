@@ -1,8 +1,7 @@
 class PhysicsState
 {
 public:
-	UMath::Vector3 m_vRotation;					// 00-0C
-	uint32_t pad;								// 0C-10
+	UMath::Quaternion m_vRotation;				// 00-10
 	UMath::Vector3 m_vPosition;					// 10-1C
 	uint32_t pad2;								// 1C-20
 	UMath::Vector3 m_vVelocity;					// 20-2C

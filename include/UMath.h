@@ -9,6 +9,12 @@ namespace UMath
 	};
 	VALIDATE_SIZE(Vector3, 0xC);
 
+	struct Quaternion
+	{
+		float y, z, x, w;
+	};
+	VALIDATE_SIZE(Quaternion, 0x10);
+
 	Vector3 CrossProduct(const Vector3& v1, const Vector3& v2)
 	{
 		return { v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x };
@@ -141,4 +147,9 @@ namespace UMath
 		}
 	};
 	VALIDATE_SIZE(Matrix4, 0x40);
+}
+
+void VU0_quattom4(UMath::Quaternion* quat, UMath::Matrix4* mat)
+{
+	((void(__cdecl*)(UMath::Quaternion*, UMath::Matrix4*))0x605720)(quat, mat);
 }
