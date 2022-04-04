@@ -14,6 +14,12 @@ public:
 		return ((bool(__thiscall*)(IVehicle*, ITrafficAI**))(0x40E6A0))(this, ai);
 	}
 
+	// 0: normal, 2: drift
+	void SetDriverStyle(int style)
+	{
+		((void(__thiscall*)(IVehicle*, int))(*(void***)this)[12])(this, style);
+	}
+
 	void* GetVehicleClass()
 	{
 		return ((void*(__thiscall*)(IVehicle*))(*(void***)this)[21])(this);

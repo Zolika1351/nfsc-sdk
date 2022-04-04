@@ -29,6 +29,7 @@ namespace plugin
 		plugin::drawingEvent::callAddress = DoHook(0x7313DF, drawingEvent::MainHook);
 		plugin::processSimSystemEvent::returnAddress = DoHook(0x7678A3, processSimSystemEvent::MainHook);
 		plugin::processWorldEvent::returnAddress = DoHook(0x6B7B3A, processWorldEvent::MainHook);
+		plugin::toggleSpeedbreakerEvent::returnAddress = DoHook(0x761CF9, toggleSpeedbreakerEvent::MainHook);
 	}
 	void Init()
 	{
