@@ -64,3 +64,4 @@ namespace plugin
 #include "GrandSceneryCullInfo.h"
 #include "GRaceStatus.h"
 #include "AICopManager.h"
+#include "ISpikeable.h"
