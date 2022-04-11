@@ -153,3 +153,64 @@ void VU0_quattom4(UMath::Quaternion* quat, UMath::Matrix4* mat)
 {
 	((void(__cdecl*)(UMath::Quaternion*, UMath::Matrix4*))0x605720)(quat, mat);
 }
+
+class bVector4
+{
+public:
+	float x, z, y, w;
+
+	float Magnitude(void) const { return sqrt(x * x + y * y + z * z); }
+};
+VALIDATE_SIZE(bVector4, 0x10);
+
+class bMatrix4
+{
+public:
+	bVector4 right;			// 00-10
+	bVector4 up;			// 10-20
+	bVector4 at;			// 20-30
+	bVector4 pos;			// 30-40
+
+	void Rotate(float x, float y, float z)
+	{
+		float cX = cos(x);
+		float sX = sin(x);
+		float cY = cos(y);
+		float sY = sin(y);
+		float cZ = cos(z);
+		float sZ = sin(z);
+
+		float rx = right.x;
+		float ry = right.y;
+		float rz = right.z;
+		float ux = up.x;
+		float uy = up.y;
+		float uz = up.z;
+		float ax = at.x;
+		float ay = at.y;
+		float az = at.z;
+
+		float x1 = cZ * cY - (sZ * sX) * sY;
+		float x2 = (cZ * sX) * sY + sZ * cY;
+		float x3 = -cX * sY;
+		float y1 = -sZ * cX;
+		float y2 = cZ * cX;
+		float y3 = sX;
+		float z1 = (sZ * sX) * cY + cZ * sY;
+		float z2 = sZ * sY - (cZ * sX) * cY;
+		float z3 = cX * cY;
+
+		right.x = x1 * rx + y1 * ry + z1 * rz;
+		right.y = x2 * rx + y2 * ry + z2 * rz;
+		right.z = x3 * rx + y3 * ry + z3 * rz;
+		up.x = x1 * ux + y1 * uy + z1 * uz;
+		up.y = x2 * ux + y2 * uy + z2 * uz;
+		up.z = x3 * ux + y3 * uy + z3 * uz;
+		at.x = x1 * ax + y1 * ay + z1 * az;
+		at.y = x2 * ax + y2 * ay + z2 * az;
+		at.z = x3 * ax + y3 * ay + z3 * az;
+	}
+
+	void RotateNew(float x, float y, float z);
+};
+VALIDATE_SIZE(bMatrix4, 0x40);
