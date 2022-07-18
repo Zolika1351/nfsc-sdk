@@ -65,3 +65,5 @@ namespace plugin
 #include "GRaceStatus.h"
 #include "AICopManager.h"
 #include "ISpikeable.h"
+#include "EAXSound.h"
+#include "AIWingman.h"

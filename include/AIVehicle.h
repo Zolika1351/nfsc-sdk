@@ -1,3 +1,5 @@
+class AIWingman;
+
 class AIVehicle
 {
 public:
@@ -23,21 +25,28 @@ public:
 	float m_fSteerAngle;						// 108-10C
 	float m_fGasPedal;							// 10C-110
 	float m_fBrakePedal;						// 110-114
-	uint8_t pad6[0xF0];							// 114-204
+	float m_fHandbrake;							// 114-118
+	uint8_t pad6[0xEC];							// 118-204
 	IPerpetrator m_sPerpetrator;				// 204-20C
 	uint8_t pad7[0x14];							// 20C-220
 	float m_fHeatLevel;							// 220-224
 	uint8_t pad8[0x4];							// 224-228
 	int m_nCostToState;							// 228-22C
+	uint8_t pad[0x58];							// 22C-284
+	IVehicle* m_pWingman;						// 284-288 wingman ptr in player ai
+	AIWingman* m_pAIWingman;					// 288-28C own AIWingman ptr
 };
 VALIDATE_OFFSET(AIPerpVehicle, m_pPursuit, 0xDC);
 VALIDATE_OFFSET(AIPerpVehicle, m_pTransmission, 0xFC);
 VALIDATE_OFFSET(AIPerpVehicle, m_fSteerAngle, 0x108);
 VALIDATE_OFFSET(AIPerpVehicle, m_fGasPedal, 0x4C + 0xC0);
 VALIDATE_OFFSET(AIPerpVehicle, m_fBrakePedal, 0x4C + 0xC4);
+VALIDATE_OFFSET(AIPerpVehicle, m_fHandbrake, 0x4C + 0xC8);
 VALIDATE_OFFSET(AIPerpVehicle, m_sPerpetrator, 0x204);
 VALIDATE_OFFSET(AIPerpVehicle, m_fHeatLevel, 0x220);
 VALIDATE_OFFSET(AIPerpVehicle, m_nCostToState, 0x228);
+VALIDATE_OFFSET(AIPerpVehicle, m_pWingman, 0x284);
+VALIDATE_OFFSET(AIPerpVehicle, m_pAIWingman, 0x288);
 
 class AIVehiclePursuit : public AIVehicle
 {
@@ -50,12 +59,12 @@ VALIDATE_OFFSET(AIVehiclePursuit, m_sPursuitAI, 0x204);
 class AIVehicleHuman : public AIPerpVehicle
 {
 public:
-	uint8_t pad[0x68];							// 22C-294
+	uint8_t pad2[0x8];							// 28C-294
 	IInputPlayer m_sInput;						// 294-29C
 	bool m_bAIControl;							// 29C-29D
-	uint8_t pad2[0x55];							// 29D-2F2
+	uint8_t pad3[0x55];							// 29D-2F2
 	bool m_bInputsBlocked;						// 2F2-2F3
-	uint8_t pad3;								// 2F3-2F4
+	uint8_t pad4;								// 2F3-2F4
 
 	void GoToGear(int gear)
 	{

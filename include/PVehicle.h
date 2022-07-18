@@ -2,6 +2,24 @@ class IVehicleAI;
 class IDamageable;
 class IEngine;
 
+enum DriverClass
+{
+	DRIVER_HUMAN,
+	DRIVER_TRAFFIC,
+	DRIVER_COP,
+	DRIVER_RACER,
+	DRIVER_NONE
+};
+
+enum DriverStyle
+{
+	STYLE_RACING,
+	STYLE_DRAG,
+	STYLE_DRIFT,
+	STYLE_HIGH_SPEED,
+	STYLE_TRAFFIC
+};
+
 class PVehicle : public PhysicsObject
 {
 public:

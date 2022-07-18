@@ -28,6 +28,16 @@ public:
 		((void(__thiscall*)(ISimable*, void*))(*(void***)this)[4])(this, ptr);
 	}
 
+	uint32_t GetOwnerHandle()
+	{
+		return ((uint32_t(__thiscall*)(ISimable*))(*(void***)this)[13])(this);
+	}
+
+	void* GetOwner()
+	{
+		return ((void* (__thiscall*)(ISimable*))(*(void***)this)[14])(this);
+	}
+
 	IRigidBody* GetRigidBody()
 	{
 		return ((IRigidBody*(__thiscall*)(ISimable*))(*(void***)this)[20])(this);
