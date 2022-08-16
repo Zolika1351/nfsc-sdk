@@ -7,3 +7,8 @@ const char* GetLocalizedString(uint32_t hash)
 {
 	return ((const char* (__cdecl*)(uint32_t))0x578830)(hash);
 }
+
+bool GetLocalizedWideString(wchar_t* out, int length, uint32_t hash)
+{
+	return ((bool(__cdecl*)(wchar_t*, int, uint32_t))0x588F20)(out, length, hash);
+}

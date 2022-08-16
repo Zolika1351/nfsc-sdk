@@ -1,11 +1,27 @@
 namespace UMath
 {
+	inline float RecipSqrt(float x) { return 1.0f / sqrtf(x); }
+
 	struct Vector3
 	{
 		float y, z, x;
 
 		float Heading(void) const { return atan2(-x, y); }
 		float Magnitude(void) const { return sqrt(x * x + y * y + z * z); }
+		void Normalise(void)
+		{
+			float sq = MagnitudeSqr();
+			if (sq > 0.0f)
+			{
+				float invsqrt = RecipSqrt(sq);
+				x *= invsqrt;
+				y *= invsqrt;
+				z *= invsqrt;
+			}
+			else x = 1.0f;
+		}
+		float MagnitudeSqr(void) const { return x * x + y * y + z * z; }
+		float Magnitude2D(void) const { return sqrtf(x * x + y * y); }
 	};
 	VALIDATE_SIZE(Vector3, 0xC);
 
@@ -15,19 +31,31 @@ namespace UMath
 	};
 	VALIDATE_SIZE(Quaternion, 0x10);
 
-	Vector3 CrossProduct(const Vector3& v1, const Vector3& v2)
-	{
-		return { v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x };
-	}
-
 	inline Vector3 operator+(const Vector3& left, const Vector3& right)
 	{
-		return { left.x + right.x, left.y + right.y, left.z + right.z };
+		Vector3 ret;
+		ret.x = left.x + right.x;
+		ret.y = left.y + right.y;
+		ret.z = left.z + right.z;
+		return ret;
 	}
-
+	
 	inline Vector3 operator-(const Vector3& left, const Vector3& right)
 	{
-		return { left.x - right.x, left.y - right.y, left.z - right.z };
+		Vector3 ret;
+		ret.x = left.x - right.x;
+		ret.y = left.y - right.y;
+		ret.z = left.z - right.z;
+		return ret;
+	}
+
+	inline Vector3 operator*(float left, const Vector3& right)
+	{
+		Vector3 ret;
+		ret.x = left * right.x;
+		ret.y = left * right.y;
+		ret.z = left * right.z;
+		return ret;
 	}
 
 	struct Matrix4
