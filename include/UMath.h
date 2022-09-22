@@ -1,35 +1,37 @@
 namespace UMath
 {
-	inline float RecipSqrt(float x) { return 1.0f / sqrtf(x); }
-
 	struct Vector3
 	{
 		float y, z, x;
 
-		float Heading(void) const { return atan2(-x, y); }
-		float Magnitude(void) const { return sqrt(x * x + y * y + z * z); }
-		void Normalise(void)
+		float Heading() { return atan2(-x, y); }
+		float Magnitude() { return sqrt(MagnitudeSqr()); }
+		float MagnitudeSqr() { return x * x + y * y + z * z; }
+		float Magnitude2D() { return sqrtf(x * x + y * y); }
+
+		void Normalise()
 		{
 			float sq = MagnitudeSqr();
 			if (sq > 0.0f)
 			{
-				float invsqrt = RecipSqrt(sq);
+				float invsqrt = 1.0f / sqrtf(sq);
 				x *= invsqrt;
 				y *= invsqrt;
 				z *= invsqrt;
 			}
 			else x = 1.0f;
 		}
-		float MagnitudeSqr(void) const { return x * x + y * y + z * z; }
-		float Magnitude2D(void) const { return sqrtf(x * x + y * y); }
+
+		Vector3& Vector3::operator+= (const Vector3& rhs)
+		{
+			this->x += rhs.x;
+			this->y += rhs.y;
+			this->z += rhs.z;
+
+			return *this;
+		}
 	};
 	VALIDATE_SIZE(Vector3, 0xC);
-
-	struct Quaternion
-	{
-		float y, z, x, w;
-	};
-	VALIDATE_SIZE(Quaternion, 0x10);
 
 	inline Vector3 operator+(const Vector3& left, const Vector3& right)
 	{
@@ -39,7 +41,7 @@ namespace UMath
 		ret.z = left.z + right.z;
 		return ret;
 	}
-	
+
 	inline Vector3 operator-(const Vector3& left, const Vector3& right)
 	{
 		Vector3 ret;
@@ -57,6 +59,21 @@ namespace UMath
 		ret.z = left * right.z;
 		return ret;
 	}
+
+	inline Vector3 operator*(const Vector3& left, float right)
+	{
+		Vector3 ret;
+		ret.x = left.x * right;
+		ret.y = left.y * right;
+		ret.z = left.z * right;
+		return ret;
+	}
+
+	struct Quaternion
+	{
+		float y, z, x, w;
+	};
+	VALIDATE_SIZE(Quaternion, 0x10);
 
 	struct Matrix4
 	{
