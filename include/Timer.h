@@ -1,7 +1,8 @@
-float& RealTimeElapsedFrame = *(float*)0xA99A5C;
-float& Tweak_GameSpeed = *(float*)0xA712AC;
-float& WorldTimeElapsed = *(float*)0xA996F8;
-uint32_t& loop_ticker = *(uint32_t*)0xA992B0;
+auto& RealTimeElapsedFrame = *(float*)0xA99A5C;
+auto& Tweak_GameSpeed = *(float*)0xA712AC;
+auto& WorldTimeElapsed = *(float*)0xA996F8;
+auto& loop_ticker = *(uint32_t*)0xA992B0;
+auto& TicksToMilliseconds = *(float*)0xA84A10;
 
 uint64_t bGetTicker()
 {

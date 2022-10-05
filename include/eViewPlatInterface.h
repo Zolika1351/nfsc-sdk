@@ -15,9 +15,9 @@ public:
 		((void(__thiscall*)(eViewPlatInterface*, UMath::Vector3*, UMath::Vector3*))0x70F1F0)(this, out, in);
 	}
 
-	void Render(eModel* model, UMath::Matrix4* mat, int unk, uint32_t flags, int unk2, int unk3)
+	void Render(eModel* model, bMatrix4* mat, void* unk, uint32_t flags, bMatrix4* unk2, void* blendData)
 	{
-		((void(__thiscall*)(eViewPlatInterface*, eModel*, UMath::Matrix4*, int, uint32_t, int, int))0x729320)(this, model, mat, unk, flags, unk2, unk3);
+		((void(__thiscall*)(eViewPlatInterface*, eModel*, bMatrix4*, void*, uint32_t, bMatrix4*, void*))0x729320)(this, model, mat, unk, flags, unk2, blendData);
 	}
 };
 
