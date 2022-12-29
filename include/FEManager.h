@@ -4,7 +4,7 @@ public:
 	uint8_t pad[0x234];							// 00000-00234
 	FEPlayerCarDB m_sPlayerCarDB;				// 00234-15EA4
 	uint8_t pad2[0xE48C];						// 15EA4-24330
-	uint32_t m_nCash;							// 24330-24334
+	int32_t m_nCash;							// 24330-24334
 	uint8_t pad3[0x6DF4];						// 24334-2B128
 	uint32_t m_aQuickRaceHandles[4];			// 2B128-2B138
 };

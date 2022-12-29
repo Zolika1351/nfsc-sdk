@@ -26,6 +26,7 @@ namespace plugin
 	}
 	void InitHooks()
 	{
+		plugin::preHUDDrawingEvent::callAddress = DoHook(0x731138, preHUDDrawingEvent::MainHook);
 		plugin::drawingEvent::callAddress = DoHook(0x7313DF, drawingEvent::MainHook);
 		plugin::processSimSystemEvent::returnAddress = DoHook(0x7678A3, processSimSystemEvent::MainHook);
 		plugin::processWorldEvent::returnAddress = DoHook(0x6B7B3A, processWorldEvent::MainHook);

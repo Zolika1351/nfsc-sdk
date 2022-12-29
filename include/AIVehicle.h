@@ -62,9 +62,11 @@ public:
 	uint8_t pad2[0x8];							// 28C-294
 	IInputPlayer m_sInput;						// 294-29C
 	bool m_bAIControl;							// 29C-29D
-	uint8_t pad3[0x55];							// 29D-2F2
+	uint8_t pad3[0x17];							// 29D-2B4
+	ActionQueue* m_pActionQueue;				// 2B4-2B8
+	uint8_t pad4[0x3A];							// 2B8-2F2
 	bool m_bInputsBlocked;						// 2F2-2F3
-	uint8_t pad4;								// 2F3-2F4
+	uint8_t pad5;								// 2F3-2F4
 
 	void GoToGear(int gear)
 	{
@@ -74,4 +76,5 @@ public:
 VALIDATE_SIZE(AIVehicleHuman, 0x2F4);
 VALIDATE_OFFSET(AIVehicleHuman, m_sInput, 0x294);
 VALIDATE_OFFSET(AIVehicleHuman, m_bAIControl, 0x29C);
+VALIDATE_OFFSET(AIVehicleHuman, m_pActionQueue, 0x2B4);
 VALIDATE_OFFSET(AIVehicleHuman, m_bInputsBlocked, 0x2F2);

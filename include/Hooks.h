@@ -117,4 +117,33 @@ namespace plugin
 			funcPtrs.emplace_back(funcPtr);
 		}
 	}
+
+	namespace preHUDDrawingEvent
+	{
+		uintptr_t callAddress;
+		std::list<void(*)()> funcPtrs;
+
+		void Run()
+		{
+			for (auto& f : funcPtrs)
+			{
+				f();
+			}
+		}
+		void __declspec(naked) MainHook()
+		{
+			__asm
+			{
+				pushad
+				call Run
+				popad
+				jmp callAddress
+			}
+		}
+		// right before a frame is displayed, do anything d3d related here
+		void Add(void(*funcPtr)())
+		{
+			funcPtrs.emplace_back(funcPtr);
+		}
+	}
 }

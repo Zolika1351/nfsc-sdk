@@ -21,6 +21,7 @@ namespace plugin
 #include "IRigidBody.h"
 #include "ISimable.h"
 #include "Game.h"
+#include "ActionQueue.h"
 #include "PhysicsObject.h"
 #include "AITrafficManager.h"
 #include "Attrib.h"
