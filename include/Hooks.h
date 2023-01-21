@@ -140,7 +140,7 @@ namespace plugin
 				jmp callAddress
 			}
 		}
-		// right before a frame is displayed, do anything d3d related here
+		// right before the HUD is displayed, do d3d draws that should be below the HUD here
 		void Add(void(*funcPtr)())
 		{
 			funcPtrs.emplace_back(funcPtr);
