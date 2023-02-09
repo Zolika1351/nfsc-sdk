@@ -68,3 +68,4 @@ namespace plugin
 #include "ISpikeable.h"
 #include "EAXSound.h"
 #include "AIWingman.h"
+#include "WCollisionMgr.h"

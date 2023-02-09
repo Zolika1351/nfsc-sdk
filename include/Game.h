@@ -88,3 +88,8 @@ void Game_JumpToCarLot()
 {
 	((void(__cdecl*)())0x64B7A0)();
 }
+
+void GPS_Engage(UMath::Vector3* a1, float a2, char a3)
+{
+	((void(__cdecl*)(UMath::Vector3*, float, char))0x433AB0)(a1, a2, a3);
+}
