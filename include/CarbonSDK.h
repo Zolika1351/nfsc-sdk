@@ -69,3 +69,4 @@ namespace plugin
 #include "EAXSound.h"
 #include "AIWingman.h"
 #include "WCollisionMgr.h"
+#include "GTrigger.h"
