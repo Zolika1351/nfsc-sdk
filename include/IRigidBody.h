@@ -1,3 +1,5 @@
+class WCollider;
+
 class PhysicsState
 {
 public:
@@ -61,8 +63,11 @@ public:
 	IRigidBody m_sRigidBody;					// 040-048
 	uint8_t pad2[0x28];							// 048-070
 	PhysicsState** m_pPhysicsState;				// 070-074
-	uint8_t pad3[0x18C];						// 074-200
+	uint8_t pad3[0x6C];							// 074-0E0
+	WCollider* m_pCollider;						// 0E0-0E4
+	uint8_t pad4[0x11C];						// 0E4-200
 };
 VALIDATE_SIZE(RBVehicle, 0x200);
 VALIDATE_OFFSET(RBVehicle, m_sRigidBody, 0x40);
 VALIDATE_OFFSET(RBVehicle, m_pPhysicsState, 0x70);
+VALIDATE_OFFSET(RBVehicle, m_pCollider, 0xE0);

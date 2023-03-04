@@ -70,3 +70,6 @@ namespace plugin
 #include "AIWingman.h"
 #include "WCollisionMgr.h"
 #include "GTrigger.h"
+#include "WCollisionTri.h"
+#include "WCollisionBarrier.h"
+#include "WCollider.h"
