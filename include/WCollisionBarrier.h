@@ -15,7 +15,8 @@ VALIDATE_SIZE(WCollisionBarrier, 0x28);
 class WCollisionBarrierList
 {
 public:
-	WCollisionBarrier* pFirst = nullptr;	// 04-08
-	WCollisionBarrier* pLast = nullptr;		// 08-0C
+	WCollisionBarrier* pFirst = nullptr;	// 00-04
+	WCollisionBarrier* pLast = nullptr;		// 04-08
+	uint8_t pad2[0x4];						// 08-0C
 };
-VALIDATE_SIZE(WCollisionBarrierList, 0x8);
+VALIDATE_SIZE(WCollisionBarrierList, 0xC);
