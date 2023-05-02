@@ -73,3 +73,4 @@ namespace plugin
 #include "WCollisionTri.h"
 #include "WCollisionBarrier.h"
 #include "WCollider.h"
+#include "FEObject.h"

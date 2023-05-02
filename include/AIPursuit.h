@@ -9,6 +9,8 @@ public:
 
 	uint8_t pad[0xFC];					// 000-0FC
 	float m_fMaxHeat;					// 0FC-100
+	uint8_t pad2[0x44];					// 100-144
+	bool m_bPerpBusted;					// 144-145
 
 	void AddVehicleToContingent(void* veh)
 	{
@@ -24,3 +26,4 @@ public:
 	}
 };
 VALIDATE_OFFSET(AIPursuit, m_fMaxHeat, 0xFC);
+VALIDATE_OFFSET(AIPursuit, m_bPerpBusted, 0x144);

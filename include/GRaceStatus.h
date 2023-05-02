@@ -25,6 +25,10 @@ public:
 	uint8_t pad2[0x78];								// 6990-6A08
 	uint32_t m_nRacerCount;							// 6A08-6A0C
 
+	void DisableBarriers()
+	{
+		((void(__thiscall*)(GRaceStatus*))0x63DE50)(this);
+	}
 	void ClearCheckpoints()
 	{
 		((void(__thiscall*)(GRaceStatus*))0x634170)(this);
