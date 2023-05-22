@@ -3,6 +3,7 @@ class ListableSet
 {
 public:
 	static inline uint8_t*& mBegin = *(uint8_t**)(begin);
+	static inline uint32_t& mCapacity = *(uint32_t*)(begin + 4);
 	static inline uint32_t& mSize = *(uint32_t*)(begin+8);
 
 	static T* Get(unsigned int id)

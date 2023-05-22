@@ -74,3 +74,6 @@ namespace plugin
 #include "WCollisionBarrier.h"
 #include "WCollider.h"
 #include "FEObject.h"
+#include "SlotPool.h"
+
+auto& CarLoaderPoolSizes = *(uint32_t*)0xA62C48;
