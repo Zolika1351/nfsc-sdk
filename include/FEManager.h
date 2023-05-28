@@ -16,7 +16,7 @@ class FEManager
 {
 public:
 	static inline FEManager*& mInstance = *(FEManager**)0xA97A7C;
-	static inline bool& mPauseRequest = *(bool*)0xA8AD18;
+	static inline int32_t& mPauseRequest = *(int32_t*)0xA8AD18;
 
 	UserProfile* GetUserProfile(int id)
 	{

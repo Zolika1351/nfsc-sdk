@@ -14,6 +14,11 @@ public:
 		return ((bool(__thiscall*)(IVehicle*, ITrafficAI**))(0x40E6A0))(this, ai);
 	}
 
+	bool IsStaging()
+	{
+		return ((bool(__thiscall*)(IVehicle*))(*(void***)this)[9])(this);
+	}
+
 	// 0: normal, 2: drift
 	void SetDriverStyle(int style)
 	{

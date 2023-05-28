@@ -12,7 +12,9 @@ public:
 	float m_fOOMass;							// 3C-40
 	uint8_t pad3[0x10];							// 40-50
 	UMath::Vector3 m_vForce;					// 50-5C
-	uint32_t pad4;								// 5C-60
+	uint8_t pad4[0x2];							// 5C-5E
+	uint8_t m_nIndex;							// 5E-5F
+	uint8_t pad5;								// 5F-60
 	UMath::Vector3 m_vTorque;					// 60-6C
 	float m_fRadius;							// 6C-70
 	UMath::Matrix4 m_mMatrix;					// 70-B0
@@ -24,6 +26,7 @@ VALIDATE_OFFSET(PhysicsState, m_fMass, 0x2C);
 VALIDATE_OFFSET(PhysicsState, m_vTurnVelocity, 0x30);
 VALIDATE_OFFSET(PhysicsState, m_fOOMass, 0x3C);
 VALIDATE_OFFSET(PhysicsState, m_vForce, 0x50);
+VALIDATE_OFFSET(PhysicsState, m_nIndex, 0x5E);
 VALIDATE_OFFSET(PhysicsState, m_vTorque, 0x60);
 VALIDATE_OFFSET(PhysicsState, m_fRadius, 0x6C);
 VALIDATE_OFFSET(PhysicsState, m_mMatrix, 0x70);
@@ -56,6 +59,26 @@ public:
 	static uint32_t IHandle() { return 0x403750; };
 };
 
+enum eInvulnerability
+{
+	INVULNERABLE_NONE,
+	INVULNERABLE_FROM_MANUAL_RESET,
+	INVULNERABLE_FROM_RESET,
+	INVULNERABLE_FROM_CONTROL_SWITCH,
+	INVULNERABLE_FROM_PHYSICS_SWITCH,
+};
+
+class IRBVehicle
+{
+public:
+	uint8_t pad[0x4];
+
+	void SetInvulnerability(eInvulnerability state, float time)
+	{
+		((void(__thiscall*)(IRBVehicle*, int, float))(*(void***)this)[5])(this, state, time);
+	}
+};
+
 class RBVehicle
 {
 public:
@@ -65,9 +88,12 @@ public:
 	PhysicsState** m_pPhysicsState;				// 070-074
 	uint8_t pad3[0x6C];							// 074-0E0
 	WCollider* m_pCollider;						// 0E0-0E4
-	uint8_t pad4[0x11C];						// 0E4-200
+	uint8_t pad4[0x40];							// 0E4-124
+	IRBVehicle m_sRBVehicle;					// 124-128
+	uint8_t pad5[0xD8];							// 128-200
 };
 VALIDATE_SIZE(RBVehicle, 0x200);
 VALIDATE_OFFSET(RBVehicle, m_sRigidBody, 0x40);
 VALIDATE_OFFSET(RBVehicle, m_pPhysicsState, 0x70);
 VALIDATE_OFFSET(RBVehicle, m_pCollider, 0xE0);
+VALIDATE_OFFSET(RBVehicle, m_sRBVehicle, 0x124);

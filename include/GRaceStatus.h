@@ -9,7 +9,7 @@ public:
 
 	GRacerInfo()
 	{
-		((GRacerInfo * (__thiscall*)(GRacerInfo*))0x629350)(this);
+		((GRacerInfo*(__thiscall*)(GRacerInfo*))0x629350)(this);
 	}
 };
 VALIDATE_SIZE(GRacerInfo, 0x384);
@@ -21,9 +21,11 @@ class GRaceStatus
 {
 public:
 	uint8_t pad[0x18];								// 0000-0018
-	GRacerInfo m_aRacers[30];						// 0018-6990
-	uint8_t pad2[0x78];								// 6990-6A08
+	GRacerInfo m_aRacerArray[30];					// 0018-6990
+	int m_aLazyRankings[30];						// 6990-6A08
 	uint32_t m_nRacerCount;							// 6A08-6A0C
+	uint8_t pad2[0x8];								// 6A0C-6A14
+	uint32_t m_bIsRacing;							// 6A14-6A18
 
 	void DisableBarriers()
 	{
@@ -45,7 +47,13 @@ public:
 	{
 		return ((int(__thiscall*)(GRaceStatus*))0x6136A0)(this);
 	}
+	GRacerInfo* GetRacerInfo(int id)
+	{
+		return ((GRacerInfo*(__thiscall*)(GRaceStatus*, int))0x6121E0)(this, id);
+	}
 
 	static inline GRaceStatus*& fObj = *(GRaceStatus**)0xA98284;
 };
 VALIDATE_OFFSET(GRaceStatus, m_nRacerCount, 0x6A08);
+VALIDATE_OFFSET(GRaceStatus, m_aLazyRankings, 0x6990);
+VALIDATE_OFFSET(GRaceStatus, m_bIsRacing, 0x6A14);

@@ -76,4 +76,23 @@ namespace plugin
 #include "FEObject.h"
 #include "SlotPool.h"
 
+class GRaceParameters
+{
+public:
+	int GetNumOpponents()
+	{
+		return ((int(__thiscall*)(GRaceParameters*))0x63C660)(this);
+	}
+	void* GetOpponentChar(int id)
+	{
+		return ((void*(__thiscall*)(GRaceParameters*, int))0x63F630)(this, id);
+	}
+};
+
 auto& CarLoaderPoolSizes = *(uint32_t*)0xA62C48;
+auto& EnableReleasePrintf = *(bool*)0xA85340;
+
+void InitQueuedFiles()
+{
+	((void(__cdecl*)())0x69B8D0)();
+}
