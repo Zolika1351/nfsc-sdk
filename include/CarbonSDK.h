@@ -75,19 +75,7 @@ namespace plugin
 #include "WCollider.h"
 #include "FEObject.h"
 #include "SlotPool.h"
-
-class GRaceParameters
-{
-public:
-	int GetNumOpponents()
-	{
-		return ((int(__thiscall*)(GRaceParameters*))0x63C660)(this);
-	}
-	void* GetOpponentChar(int id)
-	{
-		return ((void*(__thiscall*)(GRaceParameters*, int))0x63F630)(this, id);
-	}
-};
+#include "GRaceParameters.h"
 
 auto& CarLoaderPoolSizes = *(uint32_t*)0xA62C48;
 auto& EnableReleasePrintf = *(bool*)0xA85340;

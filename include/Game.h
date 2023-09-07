@@ -74,9 +74,15 @@ void Game_SabotageEngine(ISimable* veh, float time)
 	((void(__cdecl*)(ISimable*, float))0x6515D0)(veh, time);
 }
 
-void Game_ForcePursuitStart(int* unk)
+class MForcePursuitStart
 {
-	((void(__cdecl*)(int*))0x651430)(unk);
+public:
+	uint8_t pad[0x10] = { 0 };
+	float fMinHeatLevel = 5;
+};
+void Game_ForcePursuitStart(MForcePursuitStart* data)
+{
+	((void(__cdecl*)(MForcePursuitStart*))0x651430)(data);
 }
 
 void Game_JumpToSafeHouse()
