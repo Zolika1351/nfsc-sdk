@@ -33,7 +33,8 @@ public:
 	uint8_t pad5[0x40];							// 108-148
 	uint32_t m_nDriverClass;					// 148-14C
 	uint32_t m_nDriverStyle;					// 14C-150
-	uint8_t pad6[0x94];							// 150-1E4
+	uint32_t m_nGlare;							// 150-154
+	uint8_t pad6[0x90];							// 154-1E4
 
 	// originals:										 
 	// 9FB193F0 0 -> stringhash32("VehicleParams")		 
@@ -101,3 +102,4 @@ VALIDATE_OFFSET(PVehicle, m_pDamageable, 0xFC);
 VALIDATE_OFFSET(PVehicle, m_pEngine, 0xF8);
 VALIDATE_OFFSET(PVehicle, m_pVehicleAI, 0x104);
 VALIDATE_OFFSET(PVehicle, m_nDriverClass, 0x148);
+VALIDATE_OFFSET(PVehicle, m_nGlare, 0x150);

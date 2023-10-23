@@ -55,6 +55,10 @@ public:
 	{
 		((void(__thiscall*)(IRigidBody*, UMath::Matrix4*))(*(void***)this)[28])(this, mat);
 	}
+	void SetOrientation(UMath::Quaternion* quat)
+	{
+		((void(__thiscall*)(IRigidBody*, UMath::Quaternion*))(*(void***)this)[29])(this, quat);
+	}
 
 	static uint32_t IHandle() { return 0x403750; };
 };
@@ -73,9 +77,13 @@ class IRBVehicle
 public:
 	uint8_t pad[0x4];
 
-	void SetInvulnerability(eInvulnerability state, float time)
+	void SetInvulnerability(int state, float time)
 	{
 		((void(__thiscall*)(IRBVehicle*, int, float))(*(void***)this)[5])(this, state, time);
+	}
+	int GetInvulnerability()
+	{
+		return ((int(__thiscall*)(IRBVehicle*))(*(void***)this)[6])(this);
 	}
 };
 

@@ -14,6 +14,11 @@ public:
 		return ((bool(__thiscall*)(IVehicle*, ITrafficAI**))(0x40E6A0))(this, ai);
 	}
 
+	void SetStaging(bool set)
+	{
+		((void(__thiscall*)(IVehicle*, bool))(*(void***)this)[8])(this, set);
+	}
+
 	bool IsStaging()
 	{
 		return ((bool(__thiscall*)(IVehicle*))(*(void***)this)[9])(this);
@@ -23,6 +28,11 @@ public:
 	void SetDriverStyle(int style)
 	{
 		((void(__thiscall*)(IVehicle*, int))(*(void***)this)[12])(this, style);
+	}
+
+	int GetPhysicsMode()
+	{
+		return ((int(__thiscall*)(IVehicle*))(*(void***)this)[18])(this);
 	}
 
 	void* GetVehicleClass()

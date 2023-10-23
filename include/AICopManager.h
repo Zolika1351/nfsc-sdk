@@ -16,3 +16,9 @@ VALIDATE_OFFSET(AICopManager, mNumActiveCopCars, 0x90);
 VALIDATE_OFFSET(AICopManager, mMaxActiveCopCars, 0x94);
 
 AICopManager*& TheOneCopManager = *(AICopManager**)0xA83A58;
+
+class ICopMgr
+{
+public:
+	static inline auto& mDisableCops = *(bool*)0xA83A50;
+};

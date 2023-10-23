@@ -13,3 +13,4 @@ public:
 		return ((FECarRecord*(__thiscall*)(FEPlayerCarDB*))0x4BA1F0)(this);
 	}
 };
+VALIDATE_SIZE(FEPlayerCarDB, 0x15C70);
