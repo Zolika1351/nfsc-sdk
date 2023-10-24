@@ -9,4 +9,8 @@ public:
 	}
 };
 
-uint32_t& TheRaceParameters = *(uint32_t*)0xA7A1A8;
+struct RaceParameters
+{
+	uint32_t TrackNumber;
+};
+auto& TheRaceParameters = *(RaceParameters*)0xA7A1A8;

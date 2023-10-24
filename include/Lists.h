@@ -16,3 +16,4 @@ public:
 ListableSet<IPlayer, 0xA9FF5C> PlayerList;
 ListableSet<IVehicle, 0xA9F48C> RacerList;
 ListableSet<IVehicle, 0xA9F15C> VehicleList;
+ListableSet<IVehicleCache, 0xAA253C> CacheList;

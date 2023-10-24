@@ -26,13 +26,15 @@ public:
 	float m_fGasPedal;							// 10C-110
 	float m_fBrakePedal;						// 110-114
 	float m_fHandbrake;							// 114-118
-	uint8_t pad6[0xEC];							// 118-204
+	uint8_t pad6[0x8];							// 118-120
+	bool m_bNOS;								// 120-121
+	uint8_t pad7[0xE3];							// 121-204
 	IPerpetrator m_sPerpetrator;				// 204-20C
-	uint8_t pad7[0x14];							// 20C-220
+	uint8_t pad8[0x14];							// 20C-220
 	float m_fHeatLevel;							// 220-224
-	uint8_t pad8[0x4];							// 224-228
+	uint8_t pad9[0x4];							// 224-228
 	int m_nCostToState;							// 228-22C
-	uint8_t pad[0x58];							// 22C-284
+	uint8_t pad10[0x58];						// 22C-284
 	IVehicle* m_pWingman;						// 284-288 wingman ptr in player ai
 	AIWingman* m_pAIWingman;					// 288-28C own AIWingman ptr
 };

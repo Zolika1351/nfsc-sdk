@@ -13,8 +13,7 @@ public:
 	uint8_t pad3[0x10];							// 40-50
 	UMath::Vector3 m_vForce;					// 50-5C
 	uint8_t pad4[0x2];							// 5C-5E
-	uint8_t m_nIndex;							// 5E-5F
-	uint8_t pad5;								// 5F-60
+	uint16_t m_nIndex;							// 5E-60
 	UMath::Vector3 m_vTorque;					// 60-6C
 	float m_fRadius;							// 6C-70
 	UMath::Matrix4 m_mMatrix;					// 70-B0

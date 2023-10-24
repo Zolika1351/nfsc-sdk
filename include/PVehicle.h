@@ -36,6 +36,11 @@ public:
 	uint32_t m_nGlare;							// 150-154
 	uint8_t pad6[0x90];							// 154-1E4
 
+	~PVehicle()
+	{
+		((void(__thiscall*)(PVehicle*, bool))(*(void***)this)[1])(this, 1);
+	}
+
 	// originals:										 
 	// 9FB193F0 0 -> stringhash32("VehicleParams")		 
 	// 0019FABC 4 -> ptr to 9FB193F0					 

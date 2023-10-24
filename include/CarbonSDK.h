@@ -84,3 +84,6 @@ void InitQueuedFiles()
 {
 	((void(__cdecl*)())0x69B8D0)();
 }
+
+auto& Tweak_CanyonRaceUseDrop = *(bool*)0xA610DA;
+auto& Tweak_ManualShift = *(bool*)0xA83A6E;

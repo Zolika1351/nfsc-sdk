@@ -17,7 +17,7 @@ namespace UTL
 				}
 			};
 
-			uint8_t pad[0x4];										// 00-04
+			uint32_t vft;											// 00-04
 			_IList* m_pList;										// 04-08
 		};
 		VALIDATE_SIZE(Object, 0x8);
