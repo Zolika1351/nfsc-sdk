@@ -84,6 +84,8 @@ public:
 	{
 		return ((int(__thiscall*)(IRBVehicle*))(*(void***)this)[6])(this);
 	}
+
+	static uint32_t IHandle() { return 0x403740; };
 };
 
 class RBVehicle

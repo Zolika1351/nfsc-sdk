@@ -76,6 +76,7 @@ namespace plugin
 #include "FEObject.h"
 #include "SlotPool.h"
 #include "GRaceParameters.h"
+#include "IResetable.h"
 
 auto& CarLoaderPoolSizes = *(uint32_t*)0xA62C48;
 auto& EnableReleasePrintf = *(bool*)0xA85340;
