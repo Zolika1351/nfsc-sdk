@@ -20,6 +20,7 @@ namespace plugin
 #include "Entity.h"
 #include "IRigidBody.h"
 #include "ISimable.h"
+#include "GameFlowManager.h"
 #include "Game.h"
 #include "ActionQueue.h"
 #include "PhysicsObject.h"

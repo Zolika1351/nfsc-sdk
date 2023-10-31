@@ -36,9 +36,9 @@ public:
 	uint32_t m_nGlare;							// 150-154
 	uint8_t pad6[0x90];							// 154-1E4
 
-	~PVehicle()
+	void _dtor(bool a1)
 	{
-		((void(__thiscall*)(PVehicle*, bool))(*(void***)this)[1])(this, 1);
+		((void(__thiscall*)(PVehicle*, bool))(*(void***)this)[1])(this, a1);
 	}
 
 	// originals:										 

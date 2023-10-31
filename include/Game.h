@@ -7,7 +7,6 @@ enum eGameFlowState
 };
 
 UMath::Vector3& gGpsDestination = *(UMath::Vector3*)0xA98484;
-int& TheGameFlowManager = *(int*)0xA99BBC;
 bool& UnlockAllThings = *(bool*)0xA9E6C0;
 bool& SkipCareerIntro = *(bool*)0xA9E6C1;
 bool& SkipNISs = *(bool*)0xA9E64E;
