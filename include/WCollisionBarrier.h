@@ -7,8 +7,8 @@ public:
 	uint16_t pad = 0;				// 0E-10
 	UMath::Vector3 vMax;			// 10-1C
 	float fInvLen;					// 1C-20
-	void* nUnk = nullptr;			// 20-24
-	float fUnk2 = 0;				// 24-28
+	void* fSurfaceRef = nullptr;	// 20-24
+	float fDistanceToSq = 0;		// 24-28
 };
 VALIDATE_SIZE(WCollisionBarrier, 0x28);
 

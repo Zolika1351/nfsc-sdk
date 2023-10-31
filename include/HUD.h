@@ -17,7 +17,7 @@ auto NumStringRecords = (int*)0xA95384;
 
 struct tStringRecord
 {
-	uint32_t hash;
-	char* string;
+	uint32_t mHash;
+	char* mPackedString;
 };
 auto RecordTables = (tStringRecord**)0xA95378;

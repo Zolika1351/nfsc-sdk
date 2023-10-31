@@ -10,12 +10,14 @@ public:
 		LIST_CUSTOM = 16,
 	};
 
-	uint32_t m_nHandle;							// 00-04
-	uint8_t pad[0x4];							// 04-08
-	uint32_t m_nModelHash;						// 08-0C
-	uint32_t m_nFlags;							// 0C-10
-	uint8_t m_nCustomizationRecordHandle;		// 10-11
-	uint8_t pad3[0x3];							// 11-14
+	uint32_t Handle;							// 00-04
+	uint32_t FEKey;								// 04-08
+	uint32_t VehicleKey;						// 08-0C
+	uint32_t FilterBits;						// 0C-10
+	uint8_t Customization;						// 10-11
+	uint8_t CareerHandle;						// 11-12
+	uint8_t IsPresetSkin;						// 12-13
+	uint8_t pad;								// 13-14
 
 	uint32_t GetNameHash()
 	{
@@ -31,7 +33,7 @@ public:
 	}
 };
 VALIDATE_SIZE(FECarRecord, 0x14);
-VALIDATE_OFFSET(FECarRecord, m_nHandle, 0x0);
-VALIDATE_OFFSET(FECarRecord, m_nModelHash, 0x8);
-VALIDATE_OFFSET(FECarRecord, m_nFlags, 0xC);
-VALIDATE_OFFSET(FECarRecord, m_nCustomizationRecordHandle, 0x10);
+VALIDATE_OFFSET(FECarRecord, Handle, 0x0);
+VALIDATE_OFFSET(FECarRecord, VehicleKey, 0x8);
+VALIDATE_OFFSET(FECarRecord, FilterBits, 0xC);
+VALIDATE_OFFSET(FECarRecord, Customization, 0x10);

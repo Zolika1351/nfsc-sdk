@@ -8,9 +8,9 @@ class UserProfile
 {
 public:
 	uint8_t pad[0x10];							// 00000-00010
-	char m_sPlayerName[16];						// 00010-00020
+	char mName[16];								// 00010-00020
 	uint8_t pad2[0x214];						// 00020-00234
-	FEPlayerCarDB m_sPlayerCarDB;				// 00234-15EA4
+	FEPlayerCarDB mCarStable;					// 00234-15EA4
 	uint8_t pad_15EA4[0x9678];					// 15EA4-1F51C
 	FEVinylRecord m_aVinyls[700];				// 1F51C-241AC
 	uint8_t pad4[0x184];						// 241AC-24330
@@ -18,8 +18,8 @@ public:
 	uint8_t pad5[0x6DF4];						// 24334-2B128
 	uint32_t m_aQuickRaceHandles[4];			// 2B128-2B138
 };
-VALIDATE_OFFSET(UserProfile, m_sPlayerName, 0x10);
-VALIDATE_OFFSET(UserProfile, m_sPlayerCarDB, 0x234);
+VALIDATE_OFFSET(UserProfile, mName, 0x10);
+VALIDATE_OFFSET(UserProfile, mCarStable, 0x234);
 VALIDATE_OFFSET(UserProfile, m_aVinyls, 0x1F51C);
 VALIDATE_OFFSET(UserProfile, m_nCash, 0x24330);
 VALIDATE_OFFSET(UserProfile, m_aQuickRaceHandles, 0x2B128);

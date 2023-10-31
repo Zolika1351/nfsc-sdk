@@ -1,11 +1,3 @@
-enum eGameFlowState
-{
-	STATE_MENUS = 3,
-	STATE_LOADING_1,
-	STATE_LOADING_2,
-	STATE_INGAME
-};
-
 UMath::Vector3& gGpsDestination = *(UMath::Vector3*)0xA98484;
 bool& UnlockAllThings = *(bool*)0xA9E6C0;
 bool& SkipCareerIntro = *(bool*)0xA9E6C1;

@@ -1,14 +1,14 @@
 class ViewTransform
 {
 public:
-	UMath::Matrix4 m_mViewMatrix;
-	UMath::Matrix4 m_mProjectionMatrix;
-	UMath::Matrix4 m_mProjectionZBiasMatrix;
-	UMath::Matrix4 m_mViewProjectionMatrix;
-	UMath::Matrix4 m_mViewProjectionZBiasMatrix;
+	UMath::Matrix4 ViewMatrix;
+	UMath::Matrix4 ProjectionMatrix;
+	UMath::Matrix4 ProjectionZBiasMatrix;
+	UMath::Matrix4 ViewProjectionMatrix;
+	UMath::Matrix4 ViewProjectionZBiasMatrix;
 };
-VALIDATE_OFFSET(ViewTransform, m_mProjectionMatrix, 0x40);
-VALIDATE_OFFSET(ViewTransform, m_mViewProjectionMatrix, 0xC0);
+VALIDATE_OFFSET(ViewTransform, ProjectionMatrix, 0x40);
+VALIDATE_OFFSET(ViewTransform, ViewProjectionMatrix, 0xC0);
 
 class eViewPlatInterface
 {

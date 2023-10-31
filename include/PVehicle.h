@@ -26,14 +26,14 @@ public:
 	uint8_t pad2[0x88];							// 030-0B8
 	IVehicle m_sVehicle;						// 0B8-0C0
 	uint8_t pad3[0x38];							// 0C0-0F8
-	IEngine* m_pEngine;							// 0F8-0FC
-	IDamageable* m_pDamageable;					// 0FC-100
+	IEngine* mEngine;							// 0F8-0FC
+	IDamageable* mDamage;						// 0FC-100
 	uint8_t pad4[0x4];							// 100-104
-	IVehicleAI* m_pVehicleAI;					// 104-108
+	IVehicleAI* mAI;							// 104-108
 	uint8_t pad5[0x40];							// 108-148
-	uint32_t m_nDriverClass;					// 148-14C
-	uint32_t m_nDriverStyle;					// 14C-150
-	uint32_t m_nGlare;							// 150-154
+	uint32_t mDriverClass;						// 148-14C
+	uint32_t mDriverStyle;						// 14C-150
+	uint32_t mGlareState;						// 150-154
 	uint8_t pad6[0x90];							// 154-1E4
 
 	void _dtor(bool a1)
@@ -68,19 +68,19 @@ public:
 		uint32_t pad2 = 0;												// 0C-10
 		uint32_t m_nAIType = 0;											// 10-14
 		Attrib::Instance m_nModel;										// 14-24
-		UMath::Vector3* m_pRotation = nullptr;							// 24-28
-		UMath::Vector3* m_pPosition = nullptr;							// 28-2C
+		UMath::Vector3* initialVec = nullptr;							// 24-28
+		UMath::Vector3* initialPos = nullptr;							// 28-2C
 		VehicleCustomizations* m_pCustomizationRecord = nullptr;		// 2C-30
-		IVehicleCache* m_pVehicleCache = nullptr;						// 30-34
-		uint32_t pad4 = 0;												// 34-38
-		uint32_t m_nFlags = 0;											// 38-3C
+		IVehicleCache* VehicleCache = nullptr;							// 30-34
+		uint32_t matched = 0;											// 34-38
+		uint32_t Flags = 0;												// 38-3C
 		uint32_t pad5 = 0;												// 3C-40
 	};
 	VALIDATE_OFFSET(VehicleParams, m_nAIType, 0x10);
 	VALIDATE_OFFSET(VehicleParams, m_nModel, 0x14);
-	VALIDATE_OFFSET(VehicleParams, m_pRotation, 0x24);
+	VALIDATE_OFFSET(VehicleParams, initialVec, 0x24);
 	VALIDATE_OFFSET(VehicleParams, m_pCustomizationRecord, 0x2C);
-	VALIDATE_OFFSET(VehicleParams, m_pVehicleCache, 0x30);
+	VALIDATE_OFFSET(VehicleParams, VehicleCache, 0x30);
 
 	static void GetModel(Attrib::Instance* mdl, uint32_t hash, int unk)
 	{
@@ -103,8 +103,8 @@ VALIDATE_SIZE(PVehicle, 0x1E4);
 VALIDATE_OFFSET(PVehicle::AttribData, m_sName, 0x24);
 VALIDATE_OFFSET(PVehicle, m_sSimable, 0x24);
 VALIDATE_OFFSET(PVehicle, m_sVehicle, 0xB8);
-VALIDATE_OFFSET(PVehicle, m_pDamageable, 0xFC);
-VALIDATE_OFFSET(PVehicle, m_pEngine, 0xF8);
-VALIDATE_OFFSET(PVehicle, m_pVehicleAI, 0x104);
-VALIDATE_OFFSET(PVehicle, m_nDriverClass, 0x148);
-VALIDATE_OFFSET(PVehicle, m_nGlare, 0x150);
+VALIDATE_OFFSET(PVehicle, mDamage, 0xFC);
+VALIDATE_OFFSET(PVehicle, mEngine, 0xF8);
+VALIDATE_OFFSET(PVehicle, mAI, 0x104);
+VALIDATE_OFFSET(PVehicle, mDriverClass, 0x148);
+VALIDATE_OFFSET(PVehicle, mGlareState, 0x150);

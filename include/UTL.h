@@ -18,7 +18,13 @@ namespace UTL
 			};
 
 			uint32_t vft;											// 00-04
-			_IList* m_pList;										// 04-08
+			_IList* _mInterfaces;									// 04-08
+
+			template<typename T>
+			T* Find()
+			{
+				return _mInterfaces->Find<T>();
+			}
 		};
 		VALIDATE_SIZE(Object, 0x8);
 	}

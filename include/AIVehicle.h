@@ -31,9 +31,9 @@ public:
 	uint8_t pad7[0xE3];							// 121-204
 	IPerpetrator m_sPerpetrator;				// 204-20C
 	uint8_t pad8[0x14];							// 20C-220
-	float m_fHeatLevel;							// 220-224
+	float mHeat;								// 220-224
 	uint8_t pad9[0x4];							// 224-228
-	int m_nCostToState;							// 228-22C
+	int mCostToState;							// 228-22C
 	uint8_t pad10[0x58];						// 22C-284
 	IVehicle* m_pWingman;						// 284-288 wingman ptr in player ai
 	AIWingman* m_pAIWingman;					// 288-28C own AIWingman ptr
@@ -45,8 +45,8 @@ VALIDATE_OFFSET(AIPerpVehicle, m_fGasPedal, 0x4C + 0xC0);
 VALIDATE_OFFSET(AIPerpVehicle, m_fBrakePedal, 0x4C + 0xC4);
 VALIDATE_OFFSET(AIPerpVehicle, m_fHandbrake, 0x4C + 0xC8);
 VALIDATE_OFFSET(AIPerpVehicle, m_sPerpetrator, 0x204);
-VALIDATE_OFFSET(AIPerpVehicle, m_fHeatLevel, 0x220);
-VALIDATE_OFFSET(AIPerpVehicle, m_nCostToState, 0x228);
+VALIDATE_OFFSET(AIPerpVehicle, mHeat, 0x220);
+VALIDATE_OFFSET(AIPerpVehicle, mCostToState, 0x228);
 VALIDATE_OFFSET(AIPerpVehicle, m_pWingman, 0x284);
 VALIDATE_OFFSET(AIPerpVehicle, m_pAIWingman, 0x288);
 

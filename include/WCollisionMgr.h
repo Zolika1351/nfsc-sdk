@@ -4,12 +4,14 @@ public:
 	class WorldCollisionInfo
 	{
 	public:
-		UMath::Vector3 m_vHitPos;		// 00-0C
+		UMath::Vector3 fCollidePt;		// 00-0C
 		uint8_t pad[0x4];				// 0C-10
-		UMath::Vector3 m_vHitNormal;	// 10-1C
-		uint8_t pad2[0x35];				// 1C-51
-		uint8_t m_bHit;					// 51-52
-		uint8_t pad3[0x6];				// 52-58
+		UMath::Vector3 fNormal;			// 10-1C
+		uint8_t pad2[0x30];				// 1C-4C
+		float fDist;					// 4C-50
+		uint8_t pad3[0x1];				// 50-51
+		uint8_t fType;					// 51-52
+		uint8_t pad4[0x6];				// 52-58
 
 		WorldCollisionInfo()
 		{
@@ -17,7 +19,8 @@ public:
 		}
 	};
 	VALIDATE_SIZE(WorldCollisionInfo, 0x58);
-	VALIDATE_OFFSET(WorldCollisionInfo, m_bHit, 0x51);
+	VALIDATE_OFFSET(WorldCollisionInfo, fDist, 0x4C);
+	VALIDATE_OFFSET(WorldCollisionInfo, fType, 0x51);
 
 	struct tInputSeg
 	{

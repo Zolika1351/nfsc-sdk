@@ -1,8 +1,8 @@
 class FEPlayerCarDB
 {
 public:
-	FECarRecord m_aCars[200];					// 00234-011D4
-	FECustomizationRecord m_aCustomization[75];	// 011D4-15EA4
+	FECarRecord CarTable[200];					// 00234-011D4
+	FECustomizationRecord Customizations[75];	// 011D4-15EA4
 
 	FECarRecord* GetCarRecordByHandle(uint32_t handle)
 	{

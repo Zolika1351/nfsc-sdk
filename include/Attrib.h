@@ -10,9 +10,9 @@ public:
 	class Instance
 	{
 	public:
-		uint32_t pad;					// 00-04
-		void* m_pData;					// 04-08
-		uint8_t pad2[8];				// 08-10
+		Collection* mCollection = nullptr;			// 04-08
+		void* mLayoutPtr;							// 04-08
+		uint8_t pad2[8];							// 08-10
 
 		Instance() {};
 		Instance(Collection* collection, int unk)
